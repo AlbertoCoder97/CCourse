@@ -8,7 +8,8 @@
 
 /* make maintains dependency graphs, based on modification times.
 * The command make [-f makefile] [target] will look for the
-* file "Makefile" which contains rules/commands.
+* file "Makefile" (or the file specified in the -f flag) 
+* which contains rules/commands.
 * IMPORTANT: make uses TABS, NOT SPACES. */
 
 /* $(CC) contains the default compiler's name.
@@ -18,3 +19,8 @@
 * $(OBJ)/$(<NAME>) is a variable that can expand in multiple elements. */
 
 /*  */
+
+int main()
+{
+    return 0;
+}
