@@ -18,7 +18,8 @@
 * $@ The file name of the target of the rule.
 * $(OBJ)/$(<NAME>) is a variable that can expand in multiple elements. */
 
-/*  */
+/* Environment variables can be used in make. 
+* You can also create variables.*/
 
 int main()
 {
