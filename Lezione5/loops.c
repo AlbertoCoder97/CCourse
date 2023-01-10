@@ -2,7 +2,10 @@
 
 int main()
 {
+    forLoop();
     whileLoop();
+    doWhileLoop();
+
     return 0;
 }
 
@@ -35,4 +38,20 @@ void whileLoop()
         x++;
         if(x > 10) break;
     }
+}
+
+
+/* do while loop are the least common. This is their structure:
+do
+{do stuff;}
+while(condition);*/
+void doWhileLoop()
+{
+    int x = 0;
+    do
+    {
+        printf("The value of x is: %d\n", x);
+        x++;
+    } while (x < 10);
+    
 }
