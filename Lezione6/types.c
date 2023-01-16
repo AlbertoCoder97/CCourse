@@ -43,5 +43,12 @@ int main()
     NAME alberto = {2,3};
     alberto.a; //gets the int a;
     alberto.b; //gets the int b;
+
+    //you can make pointers to instances of a struct.
+    SAMPLE sam1;
+    SAMPLE* ptr;
+
+    prt = &sam1;
+    
     return 0;
 }
