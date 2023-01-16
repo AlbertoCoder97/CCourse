@@ -49,6 +49,6 @@ int main()
     SAMPLE* ptr;
 
     prt = &sam1;
-    
+    //When using pointers you need to use -> to access instances' variables.
     return 0;
 }
