@@ -21,6 +21,12 @@ int main()
         a[i] = 0;
     }
 
+    /*Sizeof will print the current size of the array, so
+    * if there are two elements (like in array a there are two 0s)
+    * it will print "8" as ints are 4 bytes long.
+    * While b is 40 since it's an array of 5 pointers to ints.
+    * In 64bits OS int pointers are 8 bytes. 4 bytes in 32bits OS.
+    */
     printf("Size of a: %ld\n", sizeof(a));
     printf("Size of b: %ld\n", sizeof(b));
     printf("Size of c: %ld\n", sizeof(c));
