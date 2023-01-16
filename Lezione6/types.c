@@ -6,6 +6,12 @@ typedef int PIPPO;
 
 /* Structures - Very similar to objects */
 /* You can declare structure in different ways. */
+
+/* You can use structures as variables types in structures. */
+
+/* If you don't use typedef to declare an instance of STUDENT
+* you need to use struct STUDENT aStudent.
+* To make it easier/like other objects, always use typedef struct*/
 typedef struct STUDENT
 {
     char id[10];
@@ -25,14 +31,17 @@ struct
     int example;
 } EXAMPLE;
 
-struct NAME 
+typedef struct NAME 
 {
     int a;
     int b;
-} instance; //Instance is an instance of NAME.
+};
 
 
 int main()
 {
+    NAME alberto = {2,3};
+    alberto.a; //gets the int a;
+    alberto.b; //gets the int b;
     return 0;
 }
