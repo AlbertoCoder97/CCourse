@@ -34,6 +34,13 @@
 
 //ALWAYS CLEAR POINTERS
 
+/* To save space when creating two-dimensional arrays is to manually create the second dimension
+* by allocating exactly the memory needed for each row in order to avoid wasting columns. 
+* table = (int **)calloc(rownum+1, sizeof(int*))
+* table now is a pointer to pointers of int. 
+* table[0] = (int*)calloc(4,sizeof(int)) etc... 
+* In this way table[i] contains pointers to ints and table itself contains pointers to pointers.*/
+
 int main()
 {
     /* A - Static Memory Allocation */
