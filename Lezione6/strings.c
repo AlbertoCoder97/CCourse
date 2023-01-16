@@ -6,6 +6,15 @@
 * "H" = "H\0" is a string which is a pointer to an array of chars
 * "" this is an empty string which contains only '\0' */
 
+/* String I/O */
+/* There are many String functions like printf(), fprintf(), puts(), fputs() etc... 
+* Reading from a string is more problematic. Do not use scanf() and fscanf() but it's better
+* to read an entire line/buffer and parse using getchar() or fgets(). */
+
+/* There is one specific function that is called gets() or fgets() where fgets() reads a string from
+* stdin or a file. NEVER USE gets() IT'S BROKEN. ALWAYS USE fgets().  There is also the counterpart that
+* is puts() and fputs(). */
+
 #define SIZE    10
 #define STRING "AString"
 
@@ -26,6 +35,13 @@ int main()
     /* These two pointers point to the same memory area. */
     char *q=STRING;
     char *r=STRING;
+
+    //You can create arrays of strings
+    char *strings[] = {"string1", "string2"};
+
+    //If you need to store multiple strings, always use pointers to strings,
+    //not pointers to array of chars.
+    //USE STRINGS
 
     return 0;
 }
