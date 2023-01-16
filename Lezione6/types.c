@@ -50,5 +50,8 @@ int main()
 
     prt = &sam1;
     //When using pointers you need to use -> to access instances' variables.
+
+    //You can create arrays of structures.
+    
     return 0;
 }
