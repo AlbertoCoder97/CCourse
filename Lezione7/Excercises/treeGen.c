@@ -18,6 +18,7 @@ int insert(NODE **binary_tree, char value)
     {
         if(!(tmp=(NODE *)malloc(sizeof(NODE))))
         {
+            //This prints the reason why malloc failed.
             perror("malloc");
             return -1;
         }
