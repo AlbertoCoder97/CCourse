@@ -1,5 +1,5 @@
 ARRAYS = arrays.c
 
 arrays: $(ARRAYS)
-	$(GCC) $(CFLAGS) $(LDFLAGS) -o $@.exe $(ARRAYS)
+	g++ $(CFLAGS) $(LDFLAGS) -o $@.exe $(ARRAYS)
 	./$@.exe
