@@ -1,13 +1,13 @@
 #Change LINUX to false when on Windows.
 LINUX = "true"
 #LINUX = "false"
-TEST = test.c
+FILESYSTEM = filesystem.c
 
-test: $(TEST)
+filesystem: $(FILESYSTEM)
 ifeq ($(LINUX), "true")
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@.out $(TEST)
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@.out $(FILESYSTEM)
 	./$@.out
 else
-	g++ $(CFLAGS) $(LDFLAGS) -o $@.exe $(TEST)
+	g++ $(CFLAGS) $(LDFLAGS) -o $@.exe $(FILESYSTEM)
 	./$@.exe
 endif
