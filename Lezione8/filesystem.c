@@ -30,7 +30,7 @@ void directories()
     //This function allows you to open a directory.
     //You pass as argument the path of the directory which can be either full or relative.
     //It returns a pointer to the directory. On error, NULL is returned.
-    int* dirp = opendir(char* filename);
+    int* dirp = opendir( "file.txt" /* char* filename */);
 
     //To read each entry in the directory you need readdir.
     //It returns a pointer to a dirent element that contains the Inode Number and the name of the file.
@@ -73,10 +73,15 @@ void fdescriptorExample()
     //open method parameters
     int open(const char *path, int oflag, mode_t mode);
 
-    int fd = open("/path/to/file", O_RDWR, S_IRUSR|S_IWUSR);
+    //S_IRUSR = readable by user, S_IWUSR = writable by user, S_IRGRP = readable by group.
+    //The second option is the permissions of the file. Like 777 in Linux etc...
+    int fd = open("/path/to/file", O_RDWR, S_IRUSR | S_IWUSR);
 
     //creat() is equivalent to open() with flags equal to O_CREAT|O_WRONLY|O_TRUNC.
     int creat(const char *pathname, mode_t mode);
+    //S_IRUSR = readable by user, S_IWUSR = writable by user, S_IRGRP = readable by group.
+    //The second option is the permissions of the file. Like 777 in Linux etc...
+    //This systemcall is atomic. It was used to sync processes.
     fd = creat("./newfile", S_IRUSR | S_IWUSR | S_IRGRP);
 }
 
