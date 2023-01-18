@@ -81,7 +81,8 @@ void fdescriptorExample()
     int creat(const char *pathname, mode_t mode);
     //S_IRUSR = readable by user, S_IWUSR = writable by user, S_IRGRP = readable by group.
     //The second option is the permissions of the file. Like 777 in Linux etc...
-    //This systemcall is atomic. It was used to sync processes.
+    //This systemcall is atomic. It was used to sync processes. Because you can't create a file
+    //if the file already exists (used for semaphores).
     fd = creat("./newfile", S_IRUSR | S_IWUSR | S_IRGRP);
 }
 

@@ -16,7 +16,9 @@
             "name": "Windows",
             "includePath": [
                 "${workspaceFolder}/**",
+                "C:/MinGW/lib/gcc/mingw32/6.3.0/include",
                 "C:/MinGW/include"
+                
             ],
             "defines": [
                 "_DEBUG",
