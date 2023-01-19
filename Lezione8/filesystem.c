@@ -116,6 +116,7 @@ void readAndWriteFile()
     If you read 1k you read the first kb, if you read again 1k you read from 1001 byte to 2k.
     It is possible to move the file pointer to read/write from an arbitrary point using 
     the syscall lseek*/
+    
     //the first parameter is the file descriptor.
     //the second parameter says how much you wanna move.
     //the third parameter indicates where you want to start to add the offset.
