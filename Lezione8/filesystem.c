@@ -59,10 +59,10 @@ void fstatExample()
     //it requires a filedescriptor and a pointer to a stat structure which is already defined
     //from C's standard libraries.
     //It returns 0 if it is successfull or a negative number in case of errors.
-    //int sts = fstat(fd, &statbuf);
+    int sts = fstat(fd, &statbuf);
 
     //stat is the same as fstat but you need to pass a const char* instead of a filedescriptor.
-    //int sts = stat("pippo.txt", &statbuf);
+    int sts = stat("pippo.txt", &statbuf);
 }
 
 /* Accessing files in C */
@@ -88,7 +88,7 @@ void fdescriptorExample()
     //The second option is the permissions of the file. Like 777 in Linux etc...
     //This systemcall is atomic. It was used to sync processes. Because you can't create a file
     //if the file already exists (used for semaphores).
-    //fd = creat("./newfile", S_IRUSR | S_IWUSR | S_IRGRP);
+    fd = creat("./newfile", S_IRUSR | S_IWUSR | S_IRGRP);
 
     //If you open a file twice, you get two different file descriptors. When you do this, you get two entities
     //in the kernel. They are two different objects.
@@ -97,5 +97,28 @@ void fdescriptorExample()
     //dup2 is a similar system call that duplicates a file descriptor into another. When you write you
     //write in filedescriptor 1 (default descriptor), if you read you read from filedescriptor 0 (default)
     //
+}
+
+/* Read and Write from a file */
+/* After getting the file descriptor with open/creat, you can use the read and write syscalls. */
+void readAndWriteFile()
+{
+    //the first parameter is the file descriptor
+    //the second parameter is the buffer where you want to read the data
+    //the third parameters indicates the amount of bytes you wanna read.
+    ssize_t read(int fd, void *buf, size_t count);
+
+    //write is the same.
+    //for the second parameter you need to put the constant because writing doesn't change the content of the buffer.
+    ssize_t write(int fd, const void *buf, size_t count);
+
+    /* Everytime you read or write on the same file, you advance the file pointer. 
+    If you read 1k you read the first kb, if you read again 1k you read from 1001 byte to 2k.
+    It is possible to move the file pointer to read/write from an arbitrary point using 
+    the syscall lseek*/
+    //the first parameter is the file descriptor.
+    //the second parameter says how much you wanna move.
+    //the third parameter indicates where you want to start to add the offset.
+    off_t lseek(int fd, off_t offset, int whence);
 }
 
