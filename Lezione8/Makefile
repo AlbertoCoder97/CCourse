@@ -1,7 +1,7 @@
 #Change LINUX to false when on Windows.
 LINUX = "false"
 #LINUX = "false"
-FILESYSTEM = filesystem.c
+FILESYSTEM = filesystemImpl.c
 
 filesystem: $(FILESYSTEM)
 ifeq ($(LINUX), "true")

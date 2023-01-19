@@ -59,17 +59,21 @@ void fstatExample()
     //it requires a filedescriptor and a pointer to a stat structure which is already defined
     //from C's standard libraries.
     //It returns 0 if it is successfull or a negative number in case of errors.
-    int sts = fstat(fd, &statbuf);
+    //int sts = fstat(fd, &statbuf);
 
     //stat is the same as fstat but you need to pass a const char* instead of a filedescriptor.
-    int sts = stat("pippo.txt", &statbuf);
+    //int sts = stat("pippo.txt", &statbuf);
 }
 
 /* Accessing files in C */
 /* In order to operate on files you need to use the "handle" or also called filedescriptor.
-File descriptors are objects that are available per-process. */
+File descriptors are objects that are available per-process. 
+There is a limited amount of files that you can open via syscalls as the OS stores an array of 
+file descriptors to avoid opening billions of files. This array of file descriptors is shared between
+all processes, so if one process "consumes" the whole array, other processes can't open more files. */
 void fdescriptorExample()
 {
+    //open and create return an integer that is the code returned after the open function. 0 when successfull.
     //open method parameters
     int open(const char *path, int oflag, mode_t mode);
 
@@ -78,11 +82,20 @@ void fdescriptorExample()
     int fd = open("/path/to/file", O_RDWR, S_IRUSR | S_IWUSR);
 
     //creat() is equivalent to open() with flags equal to O_CREAT|O_WRONLY|O_TRUNC.
+    //If the file doesn't exist, it creates it.
     int creat(const char *pathname, mode_t mode);
     //S_IRUSR = readable by user, S_IWUSR = writable by user, S_IRGRP = readable by group.
     //The second option is the permissions of the file. Like 777 in Linux etc...
     //This systemcall is atomic. It was used to sync processes. Because you can't create a file
     //if the file already exists (used for semaphores).
-    fd = creat("./newfile", S_IRUSR | S_IWUSR | S_IRGRP);
+    //fd = creat("./newfile", S_IRUSR | S_IWUSR | S_IRGRP);
+
+    //If you open a file twice, you get two different file descriptors. When you do this, you get two entities
+    //in the kernel. They are two different objects.
+    //There is another system call called dup which duplicates the file descriptor returning a new file
+    //descriptor. When using dip, you only have one entity in the kernel.
+    //dup2 is a similar system call that duplicates a file descriptor into another. When you write you
+    //write in filedescriptor 1 (default descriptor), if you read you read from filedescriptor 0 (default)
+    //
 }
 
