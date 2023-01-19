@@ -7,8 +7,8 @@ int main(int argc, char *argv[])
 {
     char *name;
     int i;
-    DIR *dirp;
 
+    DIR *dirp;
     struct dirent *entp;
 
     if(argc < 2)
@@ -30,10 +30,14 @@ int main(int argc, char *argv[])
         while(entp=readdir(dirp))
         {
             printf("-------------------------\n");
-            printf("inode:\t%lx\toffset:\t%lx\n", entp->d_ino, entp->d);
-            printf();
-            printf();
+            printf("inode:\t%lx\n", entp->d_ino);
+            printf("reclen:\t%d\t type:\t%xl\n", entp->d_reclen, entp->d_type);
+            printf("name:%s\n", entp->d_name);
             printf("-------------------------\n");
+        }
+        if(closedir(dirp))
+        {
+            perror("closedir");
         }
     }
 
