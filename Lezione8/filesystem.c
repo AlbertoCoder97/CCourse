@@ -106,10 +106,22 @@ void readAndWriteFile()
     //the first parameter is the file descriptor
     //the second parameter is the buffer where you want to read the data
     //the third parameters indicates the amount of bytes you wanna read.
+    /* Read process: 
+    * 1 - call the read passing the file descriptor
+    * 2 - verify the mode -> vnode (virtual copy of the inode) -> get the rw-lock -> then you can read. 
+    * 3 - read returns -> unlocks -> advance the offset -> return the number of bytes read.
+    * If page is not in memory -> page fault.*/
     ssize_t read(int fd, void *buf, size_t count);
 
     //write is the same.
     //for the second parameter you need to put the constant because writing doesn't change the content of the buffer.
+    //Make sure when you write strings to a file, remember to pass the length of the string +1
+    //as there is also the \0 character to indicate string's end.
+    /* Write process:
+    * 1 - Write is cached before writing on disk. May increase the file size and may require the allocation
+    * of data blocks.
+    * 2 - Read the entire block -> Write relevant data -> write back all the block. 
+    * */
     ssize_t write(int fd, const void *buf, size_t count);
 
     /* Everytime you read or write on the same file, you advance the file pointer. 
@@ -121,5 +133,15 @@ void readAndWriteFile()
     //the second parameter says how much you wanna move.
     //the third parameter indicates where you want to start to add the offset.
     off_t lseek(int fd, off_t offset, int whence);
+
+    //When creating a file, if you offset the beginning of a new file, it will make the file
+    //as large as the offset. So if you offset 1G, the file will be 1G big.
+
+    //After you're done writing/reading ALWAYS close the file.
+    //close takes the filedescriptor as parameter.
+    int close(int fd);
+
+    //You can do multiple I/O operations at the same time using the iovec structure.
+    //They aren't really used often.
 }
 

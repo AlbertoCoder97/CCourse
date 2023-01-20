@@ -1,6 +1,6 @@
 #Change LINUX to false when on Windows.
+#LINUX = "true"
 LINUX = "false"
-#LINUX = "false"
 FILESYSTEM = filesystemImpl.c
 
 filesystem: $(FILESYSTEM)
