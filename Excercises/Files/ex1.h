@@ -6,3 +6,4 @@
 #include <fcntl.h>
 
 #include <string.h>
+#include "stringUtils.h"

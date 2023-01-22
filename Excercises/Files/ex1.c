@@ -6,10 +6,11 @@
 
 #include "ex1.h"
 
+/* When the process exits, these variables will be freed when the program exits. */
 char* PATH = "./txt/";
 char* command = "create";
 
-void main(int argc, char **argv[])
+void main(int argc, char *argv[])
 {
     if(argc < 3)
     {
@@ -17,29 +18,26 @@ void main(int argc, char **argv[])
         exit(1);
     }
 
-    printf("argv[1] = %s\n", argv[1]);
-    if(strcmp(argv[1], command) == 0)
+    if(strcmp(argv[1], command) != 0)
     {
-        printf("secondo if\n");
         printf("Usage: create <file>\n");
         exit(1);
     }
 
-    char* filename;
-    strcat(filename, PATH);
-    strcat(filename, argv[1]);
-
-    printf("This is the final string: %s\n", filename);
+    char* fullPath = concatString(PATH, argv[2]);
+    printf("This is the final string: %s\n", fullPath);
     
-    /*
-    if(creat(filename, S_IRUSR | S_IWUSR ) < 0)
+    
+    if(creat(fullPath, S_IRUSR | S_IWUSR ) < 0)
     {
         perror("Error during file creation");
     }else
     {
         printf("File created!\n");
     }
-    */
+
+    /* We need to free the memory allocated for fullPath */
+    free(fullPath);
 
     exit(0);
 }
