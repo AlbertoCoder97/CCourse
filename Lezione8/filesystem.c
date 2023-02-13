@@ -75,6 +75,8 @@ void fdescriptorExample()
 {
     //open and create return an integer that is the code returned after the open function. 0 when successfull.
     //open method parameters
+    //When open returns an integer, the first LEGAL integer that returns is 3 as fd 0,1 and 2 are
+    //created by the system. 0 is stdin, 1 is stdout and 2 is stderror.
     int open(const char *path, int oflag, mode_t mode);
 
     //S_IRUSR = readable by user, S_IWUSR = writable by user, S_IRGRP = readable by group.
@@ -93,10 +95,10 @@ void fdescriptorExample()
     //If you open a file twice, you get two different file descriptors. When you do this, you get two entities
     //in the kernel. They are two different objects.
     //There is another system call called dup which duplicates the file descriptor returning a new file
-    //descriptor. When using dip, you only have one entity in the kernel.
+    //descriptor. When using dup, you only have one entity in the kernel.
     //dup2 is a similar system call that duplicates a file descriptor into another. When you write you
     //write in filedescriptor 1 (default descriptor), if you read you read from filedescriptor 0 (default)
-    //
+    //fork() does the same of dup()
 }
 
 /* Read and Write from a file */
@@ -138,7 +140,8 @@ void readAndWriteFile()
     //as large as the offset. So if you offset 1G, the file will be 1G big.
 
     //After you're done writing/reading ALWAYS close the file.
-    //close takes the filedescriptor as parameter.
+    //close takes the filedescriptor as parameter. Once you close the file, you free the
+    //file descriptor number!
     int close(int fd);
 
     //You can do multiple I/O operations at the same time using the iovec structure.
