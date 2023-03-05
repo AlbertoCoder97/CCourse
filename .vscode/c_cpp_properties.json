@@ -10,7 +10,8 @@
             "compilerPath": "/usr/bin/gcc",
             "cStandard": "gnu17",
             "cppStandard": "c++17",
-            "intelliSenseMode": "linux-gcc-x64"
+            "intelliSenseMode": "linux-gcc-x64",
+            "configurationProvider": "ms-vscode.makefile-tools"
         },
         {
             "name": "Windows",
@@ -18,7 +19,6 @@
                 "${workspaceFolder}/**",
                 "C:/MinGW/lib/gcc/mingw32/6.3.0/include",
                 "C:/MinGW/include"
-                
             ],
             "defines": [
                 "_DEBUG",
