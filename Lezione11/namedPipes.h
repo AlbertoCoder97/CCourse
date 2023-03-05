@@ -25,5 +25,9 @@
 */
 
 /*
-* 
+* If you do ll in the folder where a pipe is, instead of the d flag, you get p.
+*/
+
+/*
+* In order to have bi-directional pipes, you need two pipes.
 */
