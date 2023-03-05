@@ -13,4 +13,4 @@ else
 endif
 
 clear:
-	rm -rf semaphores.out
+	rm -rf *.out

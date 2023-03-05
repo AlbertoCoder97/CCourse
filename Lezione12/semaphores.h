@@ -104,5 +104,8 @@
 */
 
 /**
- * 
+ * Check the DiningPhilosophers problem with semaphores.
+ * Check the Sleeping Barber problem with semaphores.
+ * Check the Producer/Consumer problem with semaphores.
+ * TIP think of semaphores in the opposite way, where 0 is the "bad" and 1 is the "good"
 */
