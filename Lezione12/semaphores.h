@@ -1,5 +1,3 @@
-
-
 /*
 * Semaphores are a resource used for "signaling".
 * If a process is waiting for a <signal>, it is suspended until that <signal> is sent.
